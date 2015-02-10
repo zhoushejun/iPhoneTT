@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  YBDeviceManager.h
 //  iPhoneTT
 //
 //  Created by shejun.zhou on 15/2/9.
@@ -8,20 +8,20 @@
 
 
 /**
- @file          ViewController.h
+ @file          YBDeviceManager.h
  
  @author		shejun.zhou
  @version		1.0
  @date          2015-02-09
  @copyright     shejun.zhou
  
- @brief         主界面
+ @brief         获取当前设备硬件型号
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface ViewController : UIViewController
+@interface YBDeviceManager : NSObject
 
++ (NSString *)devicePlatform;
 
 @end
-
