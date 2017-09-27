@@ -25,14 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(10, 100, SCREEN_WIDTH - 20, 44);
-    btn.backgroundColor = [UIColor grayColor];
-    [btn setTitle:@"test" forState:UIControlStateNormal];
-    btn.titleLabel.textColor = [UIColor orangeColor];
-    btn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [btn addTarget:self action:@selector(btnShowDeviceVersion:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,10 +32,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)btnShowDeviceVersion:(id)sender {
+- (IBAction)btnShowDeviceVersion:(id)sender {
     NSString *strDevicePlatform = [NSString stringWithFormat:@"%@",[YBDeviceManager devicePlatform]];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:strDevicePlatform delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alertView show];
+    
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"当前设备型号" message:strDevicePlatform preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:alertAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end
